@@ -45,8 +45,7 @@ var moveEnemies = function(data) {
   var enemies = svg.selectAll('.enemies')
     .data(data);
 
-
-//existing enemies
+  //existing enemies
   enemies.transition()
     .duration(750)
     .attr('cx', function(d) { return d.x; })
@@ -60,20 +59,55 @@ var moveEnemies = function(data) {
   .attr('cy', function(d) {return d.y; })
   .attr('r', 10)
   .transition()
-  .duration(750);
+  .duration(750).each(function(enemy) {
+
+  });
 };
 
+var currentScore = 0;
+var collisions = 0;
+
+
 setInterval(function() {
-  moveEnemies(randomPositions(30));
+  moveEnemies(randomPositions(30));  
 }, 1000);
 
+setInterval(function() {
+  d3.select('.current').selectAll('span').text(currentScore++);
+}, 60);
 
 
 
+var checkCollision = function() {
+  var radiusSum = enemy.attr('r') + circle.attr('r');
+  var xDiff = enemy.attr('cx') - circle.attr('cx');
+  var yDiff = enemy.attr('cy') - circle.attr('cy');
 
+  var separation = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 
+  if (separation < radiusSum) {
+    // callback(circle, enemy);
+     d3.select('.collisions').selectAll('span').text(collisions++);
+    //function that changes the score to zero
+    //check if it is greater than highest score.
+  }
+};
 
+// checkCollision = (enemy, collidedCallback) ->
+//     _(players).each (player) ->
+//       radiusSum =  parseFloat(enemy.attr('r')) + player.r
+//       xDiff = parseFloat(enemy.attr('cx')) - player.x
+//       yDiff = parseFloat(enemy.attr('cy')) - player.y
 
+//       separation = Math.sqrt( Math.pow(xDiff,2) + Math.pow(yDiff,2) )
+//       collidedCallback(player, enemy) if separation < radiusSum
+// ¶
+// If we have a collision, just reset the score
+
+//   onCollision = ->
+//     updateBestScore()
+//     gameStats.score = 0
+//     updateScore()
 
 
 
