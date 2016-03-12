@@ -3,6 +3,12 @@
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 
+
+body {
+  background-color: black;
+  color: white;
+}
+
 .scoreboard {
   height: 100%;
   width: 50%;
@@ -18,6 +24,11 @@ Feel free to use it if you like. */
   right: 10px;
 }
 
+
+.highscore, .current, .collisions {
+  font-family: arial;
+}
+
 .board {
   height: 600px;
   width: 900px;
@@ -25,10 +36,15 @@ Feel free to use it if you like. */
   border-radius: 4px;
   margin: 0 auto;
   padding: 15px;
+  background-color: white;
 }
 
 .enemies {
+  
+  height: 20px;
+  width: 20px;
   background-color: black;
+
 
 }
 

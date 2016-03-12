@@ -58,8 +58,8 @@ var checkCollision = function(enemy) {
   // var enemy = d3.select(this);
   var radiusSum = +enemy.attr('r') + +circle.attr('r');
 
-  var xDiff = Number(enemy.attr('cx'))- Number(circle.attr('cx'));
-  var yDiff = Number(enemy.attr('cy')) - Number(circle.attr('cy'));
+  var xDiff = Number(enemy.attr('x'))- Number(circle.attr('cx'));
+  var yDiff = Number(enemy.attr('y')) - Number(circle.attr('cy'));
   var separation = Math.sqrt((Math.pow(xDiff, 2) + Math.pow(yDiff, 2)));
   
   if (separation < radiusSum) {
@@ -85,16 +85,22 @@ var moveEnemies = function(data) {
       };
     })
     // .tween('custom', checkCollision)
-    .attr('cx', function(d) { return d.x; })
-    .attr('cy', function(d) {return d.y; })
+    .attr('x', function(d) { return d.x; })
+    .attr('y', function(d) {return d.y; })
     .attr("r", 10);
 
   //updating new elements
-  enemies.enter().append('svg:circle')
+  enemies.enter().append('svg:image')
   .attr('class', 'enemies')
-  .attr('cx', function(d) { return d.x; })
-  .attr('cy', function(d) {return d.y; })
-  .attr('r', 10)
+  .attr('xlink:href', "enemy.png")
+  .attr("x", function(d) { return d.x; })
+  .attr("y", function(d) { return d.y; })
+  .attr("width", "20")
+  .attr("height", "20")
+  // .attr('cx', function(d) { return d.x; })
+  // .attr('cy', function(d) {return d.y; })
+  // .attr('r', 10)
+  // .attr('fill', url('enemy.png'))
   .transition()
   // .tween('custom', function() { 
   //   console.log(this);
@@ -107,7 +113,7 @@ var moveEnemies = function(data) {
 };
 
 setInterval(function() {
-  moveEnemies(randomPositions(10));  
+  moveEnemies(randomPositions(20));  
 }, 1000);
 
 setInterval(function() {
@@ -121,6 +127,21 @@ setInterval(function() {
 }, 5000);
 
 
+// var width = 800,
+//     height = 800;
+
+// var svg = d3.select("body").append("svg")
+//     .attr("width", width)
+//     .attr("height", height);
+
+// var g = svg.append("g");
+
+// var img = g.append("svg:image")
+//     .attr("xlink:href", "http://www.clker.com/cliparts/1/4/5/a/1331068897296558865Sitting%20Racoon.svg")
+//     .attr("width", 200)
+//     .attr("height", 200)
+//     .attr("x", 228)
+//     .attr("y",53);
 
 
 
