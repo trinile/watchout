@@ -6,7 +6,6 @@ Feel free to use it if you like. */
 
 body {
   background-color: black;
-  color: white;
 }
 
 .scoreboard {
@@ -22,11 +21,18 @@ body {
   /*text-align: right;*/
   position: absolute;
   right: 10px;
+
 }
 
-
-.highscore, .current, .collisions {
+h1 {
   font-family: arial;
+  color: white;
+  text-align: center;
+}
+.highscore, .current, .collisions {
+  font-family: impact;
+  color: white;
+  letter-spacing: 2px;
 }
 
 .board {
@@ -36,17 +42,10 @@ body {
   border-radius: 4px;
   margin: 0 auto;
   padding: 15px;
-  background-color: white;
-}
-
-.enemies {
-  
-  height: 20px;
-  width: 20px;
   background-color: black;
-
-
+  border: 1px white solid;
 }
+
 
 .update {
   background-color: blue;
@@ -55,3 +54,27 @@ body {
 .player {
   background-color: orange; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,6 +41,7 @@ var circle = svg.selectAll(('.player'))
 var currentScore = 0;
 var collisions = 0;
 var highScore = 0;
+var numEnemies = 3; // 3 initial enemies
 
 var onCollision = function() {
 
@@ -49,6 +50,7 @@ var onCollision = function() {
 
   collisions++;
   currentScore = 0;
+
   d3.select('.collisions').selectAll('span').text(collisions);
   d3.select('.current').selectAll('span').text(0);
   // if (d3.select('.highscore').selectAll('span').text() < currentScore);
@@ -92,11 +94,11 @@ var moveEnemies = function(data) {
   //updating new elements
   enemies.enter().append('svg:image')
   .attr('class', 'enemies')
-  .attr('xlink:href', "enemy.png")
+  .attr('xlink:href', "enemy2.gif")
   .attr("x", function(d) { return d.x; })
   .attr("y", function(d) { return d.y; })
-  .attr("width", "20")
-  .attr("height", "20")
+  .attr("width", "40")
+  .attr("height", "40")
   // .attr('cx', function(d) { return d.x; })
   // .attr('cy', function(d) {return d.y; })
   // .attr('r', 10)
@@ -112,8 +114,15 @@ var moveEnemies = function(data) {
   .duration(750);
 };
 
+
 setInterval(function() {
-  moveEnemies(randomPositions(20));  
+  moveEnemies(randomPositions(numEnemies));  
+}, 1000);
+
+setInterval(function() {
+  if(numEnemies < 30) {
+    numEnemies++
+  }
 }, 1000);
 
 setInterval(function() {
@@ -142,9 +151,6 @@ setInterval(function() {
 //     .attr("height", 200)
 //     .attr("x", 228)
 //     .attr("y",53);
-
-
-
 
 
 
